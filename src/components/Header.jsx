@@ -1,11 +1,11 @@
 import React from 'react';
 import { RefreshCw, Bell, User, Globe } from 'lucide-react';
 
-export default function Header({ lastUpdated, onSync }) {
+export default function Header({ title, lastUpdated, onSync }) {
   return (
     <header className="bg-white border-b border-slate-200 px-6 py-3.5 flex items-center justify-between shadow-xs sticky top-0 z-10">
       <div className="flex items-center space-x-4">
-        <h1 className="text-xl font-bold text-slate-800 tracking-tight">Dashboard</h1>
+        <h1 className="text-xl font-bold text-slate-800 tracking-tight capitalize">{title || 'Dashboard'}</h1>
         <button
           onClick={onSync}
           className="flex items-center space-x-1.5 px-3 py-1 bg-cyan-50 hover:bg-cyan-100 text-cyan-600 rounded-full text-xs font-semibold transition-colors border border-cyan-200"

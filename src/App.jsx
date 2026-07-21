@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardPage from './pages/DashboardPage';
+import LogsPage from './pages/LogsPage';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -21,11 +22,14 @@ export default function App() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
         {/* Top Bar Header */}
-        <Header lastUpdated={lastUpdated} onSync={handleSync} />
+        <Header title={activeTab} lastUpdated={lastUpdated} onSync={handleSync} />
 
-        {/* Dashboard Main View */}
+        {/* Dynamic Page Views */}
         <main className="p-6 flex-1 max-w-7xl w-full mx-auto">
-          <DashboardPage onSelectCategory={(cat) => setActiveTab(cat)} />
+          {activeTab === 'dashboard' && (
+            <DashboardPage onSelectCategory={(cat) => setActiveTab(cat)} />
+          )}
+          {activeTab === 'logs' && <LogsPage />}
         </main>
       </div>
     </div>
