@@ -7,7 +7,6 @@ import {
   FileText,
   Clock,
   Share2,
-  Video,
   PhoneCall,
   Mic,
   MessageSquare,
@@ -138,7 +137,14 @@ export default function Sidebar() {
 
           {openSections.social && (
             <div className="ml-8 mt-1 space-y-1 pl-2 border-l border-slate-800 text-xs">
-              <button onClick={() => navigate('/social_apps')} className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/socialnetwork/social_apps')}
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg transition-all ${
+                  currentPath.includes('/social_apps')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <MessageSquare className="w-4 h-4 text-cyan-400" />
                   <span>Social Apps</span>
@@ -174,10 +180,6 @@ export default function Sidebar() {
                   <span>Messages</span>
                 </div>
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
-              </button>
-              <button onClick={() => navigate('/photos')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
-                <Image className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Photos</span>
               </button>
             </div>
           )}

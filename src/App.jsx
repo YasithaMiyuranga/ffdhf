@@ -5,16 +5,17 @@ import Header from './components/Header';
 import DashboardPage from './pages/DashboardPage';
 import LogsPage from './pages/LogsPage';
 import ScreenTimePage from './pages/ScreenTimePage';
+import SocialAppsPage from './pages/social_networks/SocialAppsPage';
 
 function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const [lastUpdated, setLastUpdated] = useState('2026-07-21 15:30:00');
 
-  // Compute page header title based on route path
   const getPageTitle = (pathname) => {
     if (pathname === '/logs') return 'Logs';
     if (pathname === '/screetime' || pathname === '/screentime') return 'Screen Time';
+    if (pathname.includes('/social_apps')) return 'Social Apps';
     return 'Dashboard';
   };
 
@@ -41,6 +42,8 @@ function MainLayout() {
             <Route path="/logs" element={<LogsPage />} />
             <Route path="/screetime" element={<ScreenTimePage />} />
             <Route path="/screentime" element={<ScreenTimePage />} />
+            <Route path="/socialnetwork/social_apps" element={<SocialAppsPage />} />
+            <Route path="/social_apps" element={<SocialAppsPage />} />
           </Routes>
         </main>
       </div>
