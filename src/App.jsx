@@ -8,6 +8,8 @@ import ScreenTimePage from './pages/ScreenTimePage';
 import SocialAppsPage from './pages/social_networks/SocialAppsPage';
 import AppCallsPage from './pages/social_networks/AppCallsPage';
 import AppAudioPage from './pages/social_networks/AppAudioPage';
+import YouTubePage from './pages/video_app/YouTubePage';
+import TikTokPage from './pages/video_app/TikTokPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -20,6 +22,8 @@ function MainLayout() {
     if (pathname.includes('/social_apps')) return 'Social Apps';
     if (pathname.includes('/app_calls')) return 'App Calls';
     if (pathname.includes('/app_audio')) return 'App Audio';
+    if (pathname.includes('/youtube')) return 'YouTube';
+    if (pathname.includes('/tiktok')) return 'TikTok';
     return 'Dashboard';
   };
 
@@ -52,6 +56,10 @@ function MainLayout() {
             <Route path="/app_calls" element={<AppCallsPage />} />
             <Route path="/socialnetwork/app_audio" element={<AppAudioPage />} />
             <Route path="/app_audio" element={<AppAudioPage />} />
+            <Route path="/video_app/youtube" element={<YouTubePage />} />
+            <Route path="/youtube" element={<YouTubePage />} />
+            <Route path="/video_app/tiktok" element={<TikTokPage />} />
+            <Route path="/tiktok" element={<TikTokPage />} />
           </Routes>
         </main>
       </div>
