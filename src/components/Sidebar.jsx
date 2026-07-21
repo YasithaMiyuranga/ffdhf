@@ -169,8 +169,12 @@ export default function Sidebar() {
               </button>
 
               <button
-                onClick={() => navigate('/app_audio')}
-                className="w-full flex items-center space-x-2 px-2.5 py-2 rounded-lg hover:bg-slate-800/40 text-slate-300"
+                onClick={() => navigate('/socialnetwork/app_audio')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-2 rounded-lg transition-all ${
+                  currentPath.includes('/app_audio')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
               >
                 <Mic className="w-4 h-4 text-cyan-400" />
                 <span>App Audio</span>

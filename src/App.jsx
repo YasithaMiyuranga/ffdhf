@@ -7,6 +7,7 @@ import LogsPage from './pages/LogsPage';
 import ScreenTimePage from './pages/ScreenTimePage';
 import SocialAppsPage from './pages/social_networks/SocialAppsPage';
 import AppCallsPage from './pages/social_networks/AppCallsPage';
+import AppAudioPage from './pages/social_networks/AppAudioPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function MainLayout() {
     if (pathname === '/screetime' || pathname === '/screentime') return 'Screen Time';
     if (pathname.includes('/social_apps')) return 'Social Apps';
     if (pathname.includes('/app_calls')) return 'App Calls';
+    if (pathname.includes('/app_audio')) return 'App Audio';
     return 'Dashboard';
   };
 
@@ -48,6 +50,8 @@ function MainLayout() {
             <Route path="/social_apps" element={<SocialAppsPage />} />
             <Route path="/socialnetwork/app_calls" element={<AppCallsPage />} />
             <Route path="/app_calls" element={<AppCallsPage />} />
+            <Route path="/socialnetwork/app_audio" element={<AppAudioPage />} />
+            <Route path="/app_audio" element={<AppAudioPage />} />
           </Routes>
         </main>
       </div>
