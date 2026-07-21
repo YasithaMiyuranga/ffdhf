@@ -154,8 +154,12 @@ export default function Sidebar() {
               </button>
 
               <button
-                onClick={() => navigate('/app_calls')}
-                className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg hover:bg-slate-800/40 text-slate-300"
+                onClick={() => navigate('/socialnetwork/app_calls')}
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg transition-all ${
+                  currentPath.includes('/app_calls')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
               >
                 <div className="flex items-center space-x-2">
                   <PhoneCall className="w-4 h-4 text-cyan-400" />

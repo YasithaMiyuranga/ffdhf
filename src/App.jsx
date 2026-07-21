@@ -6,6 +6,7 @@ import DashboardPage from './pages/DashboardPage';
 import LogsPage from './pages/LogsPage';
 import ScreenTimePage from './pages/ScreenTimePage';
 import SocialAppsPage from './pages/social_networks/SocialAppsPage';
+import AppCallsPage from './pages/social_networks/AppCallsPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function MainLayout() {
     if (pathname === '/logs') return 'Logs';
     if (pathname === '/screetime' || pathname === '/screentime') return 'Screen Time';
     if (pathname.includes('/social_apps')) return 'Social Apps';
+    if (pathname.includes('/app_calls')) return 'App Calls';
     return 'Dashboard';
   };
 
@@ -44,6 +46,8 @@ function MainLayout() {
             <Route path="/screentime" element={<ScreenTimePage />} />
             <Route path="/socialnetwork/social_apps" element={<SocialAppsPage />} />
             <Route path="/social_apps" element={<SocialAppsPage />} />
+            <Route path="/socialnetwork/app_calls" element={<AppCallsPage />} />
+            <Route path="/app_calls" element={<AppCallsPage />} />
           </Routes>
         </main>
       </div>
