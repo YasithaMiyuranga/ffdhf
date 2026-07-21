@@ -255,7 +255,11 @@ export default function Sidebar() {
 
               <button
                 onClick={() => navigate('/video_app/reelshort')}
-                className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300"
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/reelshort')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
               >
                 <ReelShortSidebarIcon />
                 <span>ReelShort</span>
@@ -263,7 +267,11 @@ export default function Sidebar() {
 
               <button
                 onClick={() => navigate('/video_app/onlyfans')}
-                className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300"
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/onlyfans')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
               >
                 <OnlyFansSidebarIcon />
                 <span>OnlyFans</span>

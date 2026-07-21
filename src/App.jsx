@@ -10,6 +10,8 @@ import AppCallsPage from './pages/social_networks/AppCallsPage';
 import AppAudioPage from './pages/social_networks/AppAudioPage';
 import YouTubePage from './pages/video_app/YouTubePage';
 import TikTokPage from './pages/video_app/TikTokPage';
+import ReelShortPage from './pages/video_app/ReelShortPage';
+import OnlyFansPage from './pages/video_app/OnlyFansPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -24,6 +26,8 @@ function MainLayout() {
     if (pathname.includes('/app_audio')) return 'App Audio';
     if (pathname.includes('/youtube')) return 'YouTube';
     if (pathname.includes('/tiktok')) return 'TikTok';
+    if (pathname.includes('/reelshort')) return 'ReelShort';
+    if (pathname.includes('/onlyfans')) return 'OnlyFans';
     return 'Dashboard';
   };
 
@@ -60,6 +64,10 @@ function MainLayout() {
             <Route path="/youtube" element={<YouTubePage />} />
             <Route path="/video_app/tiktok" element={<TikTokPage />} />
             <Route path="/tiktok" element={<TikTokPage />} />
+            <Route path="/video_app/reelshort" element={<ReelShortPage />} />
+            <Route path="/reelshort" element={<ReelShortPage />} />
+            <Route path="/video_app/onlyfans" element={<OnlyFansPage />} />
+            <Route path="/onlyfans" element={<OnlyFansPage />} />
           </Routes>
         </main>
       </div>
