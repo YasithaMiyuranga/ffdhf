@@ -22,6 +22,8 @@ import TrackKeywordsPage from './pages/phone_data/TrackKeywordsPage';
 import WiFiLoggerPage from './pages/phone_data/WiFiLoggerPage';
 import AppManagementPage from './pages/phone_data/AppManagementPage';
 import ContactsPage from './pages/phone_data/ContactsPage';
+import VideoPreviewPage from './pages/phone_data/VideoPreviewPage';
+import CalendarPage from './pages/phone_data/CalendarPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -47,7 +49,9 @@ function MainLayout() {
     if (pathname.includes('/track_keywords')) return 'Track Keywords';
     if (pathname.includes('/wifi_logger')) return 'Wi-Fi Logger';
     if (pathname.includes('/app_management')) return 'App Management';
+    if (pathname.includes('/video_preview')) return 'Video Preview';
     if (pathname.includes('/contacts')) return 'Contacts';
+    if (pathname.includes('/calendar')) return 'Calendar';
     return 'Dashboard';
   };
 
@@ -106,8 +110,12 @@ function MainLayout() {
             <Route path="/wifi_logger" element={<WiFiLoggerPage />} />
             <Route path="/phonedata/app_management" element={<AppManagementPage />} />
             <Route path="/app_management" element={<AppManagementPage />} />
+            <Route path="/phonedata/video_preview" element={<VideoPreviewPage />} />
+            <Route path="/video_preview" element={<VideoPreviewPage />} />
             <Route path="/phonedata/contacts" element={<ContactsPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/phonedata/calendar" element={<CalendarPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
           </Routes>
         </main>
       </div>

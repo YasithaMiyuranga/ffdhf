@@ -280,7 +280,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        {/* Phone Data Accordion (ALL 11 items from screenshot 1) */}
+        {/* Phone Data Accordion */}
         <div>
           <button
             onClick={() => toggleSection('phoneData')}
@@ -295,17 +295,38 @@ export default function Sidebar() {
 
           {openSections.phoneData && (
             <div className="ml-8 mt-1 space-y-1 pl-2 border-l border-slate-800 text-xs">
-              <button onClick={() => navigate('/phonedata/calls')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/calls')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/calls') && !currentPath.includes('/calls_recording')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <PhoneCall className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Calls</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/calls_recording')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/calls_recording')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/calls_recording')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Mic className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Calls Recording</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/messages')} className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/messages')}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/messages')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <MessageSquare className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Messages</span>
@@ -313,12 +334,26 @@ export default function Sidebar() {
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/photos')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/photos')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/photos')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Image className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Photos</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/browser_history')} className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/browser_history')}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/browser_history')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <Globe className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Browser History</span>
@@ -326,7 +361,14 @@ export default function Sidebar() {
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/keylogger')} className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/keylogger')}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/keylogger')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Keylogger</span>
@@ -334,27 +376,74 @@ export default function Sidebar() {
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/track_keywords')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/track_keywords')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/track_keywords')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Search className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Track Keywords</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/wifi_logger')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/wifi_logger')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/wifi_logger')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Wifi className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Wi-Fi Logger</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/app_management')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/app_management')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/app_management')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Grid className="w-3.5 h-3.5 text-cyan-400" />
                 <span>App Management</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/contacts')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/video_preview')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/video_preview')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Video className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Video Preview</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/phonedata/contacts')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/contacts')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Users className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Contacts</span>
               </button>
 
-              <button onClick={() => navigate('/phonedata/calendar')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/phonedata/calendar')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/calendar')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Calendar className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Calendar</span>
               </button>
@@ -362,7 +451,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        {/* Remote Control Accordion (ALL 3 items from screenshot 1) */}
+        {/* Remote Control Accordion */}
         <div>
           <button
             onClick={() => toggleSection('remoteControl')}
@@ -401,7 +490,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        {/* Location Tracking Accordion (ALL 2 items from screenshot 1) */}
+        {/* Location Tracking Accordion */}
         <div>
           <button
             onClick={() => toggleSection('location')}
