@@ -30,6 +30,10 @@ import RecordScreenPage from './pages/remote/RecordScreenPage';
 import LiveScreenPage from './pages/remote/LiveScreenPage';
 import TakePhotosPage from './pages/remote/TakePhotosPage';
 import RecordVideoPage from './pages/remote/RecordVideoPage';
+import LocationsPage from './pages/location/LocationsPage';
+import DrivingTrackingPage from './pages/location/DrivingTrackingPage';
+import GeofencePage from './pages/location/GeofencePage';
+import DashCamsPage from './pages/location/DashCamsPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -64,6 +68,10 @@ function MainLayout() {
     if (pathname.includes('/live_screen')) return 'Live Screen';
     if (pathname.includes('/take_photos')) return 'Take Photos';
     if (pathname.includes('/record_video')) return 'Record Video';
+    if (pathname.includes('/locations')) return 'Locations';
+    if (pathname.includes('/driving_tracking')) return 'Driving Tracking';
+    if (pathname.includes('/geofence')) return 'Geofence';
+    if (pathname.includes('/dash_cams')) return 'Dash Cams';
     return 'Dashboard';
   };
 
@@ -134,6 +142,14 @@ function MainLayout() {
             <Route path="/remote/live_screen" element={<LiveScreenPage />} />
             <Route path="/remote/take_photos" element={<TakePhotosPage />} />
             <Route path="/remote/record_video" element={<RecordVideoPage />} />
+            <Route path="/location/locations" element={<LocationsPage />} />
+            <Route path="/locations" element={<LocationsPage />} />
+            <Route path="/location/driving_tracking" element={<DrivingTrackingPage />} />
+            <Route path="/driving_tracking" element={<DrivingTrackingPage />} />
+            <Route path="/location/geofence" element={<GeofencePage />} />
+            <Route path="/geofence" element={<GeofencePage />} />
+            <Route path="/location/dash_cams" element={<DashCamsPage />} />
+            <Route path="/dash_cams" element={<DashCamsPage />} />
           </Routes>
         </main>
       </div>

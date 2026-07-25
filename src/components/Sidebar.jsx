@@ -28,7 +28,8 @@ import {
   ChevronRight,
   Flame,
   BatteryCharging,
-  Tv
+  Tv,
+  Navigation
 } from 'lucide-react';
 
 // Custom SVG Logos for Video Apps Sidebar
@@ -563,14 +564,52 @@ export default function Sidebar() {
 
           {openSections.location && (
             <div className="ml-8 mt-1 space-y-1 pl-2 border-l border-slate-800 text-xs">
-              <button onClick={() => navigate('/location/locations')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/location/locations')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/locations')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Locations</span>
               </button>
 
-              <button onClick={() => navigate('/location/geofence')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/location/driving_tracking')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/driving_tracking')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Navigation className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Driving Tracking</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/location/geofence')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/geofence')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Shield className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Geofence</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/location/dash_cams')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/dash_cams')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Video className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Dash Cams</span>
               </button>
             </div>
           )}
