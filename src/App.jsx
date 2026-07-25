@@ -12,6 +12,8 @@ import YouTubePage from './pages/video_app/YouTubePage';
 import TikTokPage from './pages/video_app/TikTokPage';
 import ReelShortPage from './pages/video_app/ReelShortPage';
 import OnlyFansPage from './pages/video_app/OnlyFansPage';
+import CallsPage from './pages/phone_data/CallsPage';
+import CallsRecordingPage from './pages/phone_data/CallsRecordingPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -28,6 +30,8 @@ function MainLayout() {
     if (pathname.includes('/tiktok')) return 'TikTok';
     if (pathname.includes('/reelshort')) return 'ReelShort';
     if (pathname.includes('/onlyfans')) return 'OnlyFans';
+    if (pathname.includes('/calls_recording')) return 'Calls Recording';
+    if (pathname.includes('/calls')) return 'Calls';
     return 'Dashboard';
   };
 
@@ -68,6 +72,10 @@ function MainLayout() {
             <Route path="/reelshort" element={<ReelShortPage />} />
             <Route path="/video_app/onlyfans" element={<OnlyFansPage />} />
             <Route path="/onlyfans" element={<OnlyFansPage />} />
+            <Route path="/phonedata/calls" element={<CallsPage />} />
+            <Route path="/calls" element={<CallsPage />} />
+            <Route path="/phonedata/calls_recording" element={<CallsRecordingPage />} />
+            <Route path="/calls_recording" element={<CallsRecordingPage />} />
           </Routes>
         </main>
       </div>
