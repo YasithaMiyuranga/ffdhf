@@ -27,7 +27,8 @@ import {
   ChevronDown,
   ChevronRight,
   Flame,
-  BatteryCharging
+  BatteryCharging,
+  Tv
 } from 'lucide-react';
 
 // Custom SVG Logos for Video Apps Sidebar
@@ -466,7 +467,14 @@ export default function Sidebar() {
 
           {openSections.remoteControl && (
             <div className="ml-8 mt-1 space-y-1 pl-2 border-l border-slate-800 text-xs">
-              <button onClick={() => navigate('/remote/record_surround')} className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/remote/record_surround')}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/record_surround')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <Mic className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Record Surround</span>
@@ -474,7 +482,14 @@ export default function Sidebar() {
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
               </button>
 
-              <button onClick={() => navigate('/remote/capture_screenshots')} className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/remote/capture_screenshots')}
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/capture_screenshots')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <Maximize2 className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Capture Screenshots</span>
@@ -482,9 +497,52 @@ export default function Sidebar() {
                 <span className="px-1 py-0.2 text-[9px] bg-red-500 text-white rounded font-bold">HOT</span>
               </button>
 
-              <button onClick={() => navigate('/remote/take_photos')} className="w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/40 text-slate-300">
+              <button
+                onClick={() => navigate('/remote/record_screen')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/record_screen')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Video className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Record Screen</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/remote/live_screen')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/live_screen')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Tv className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Live Screen</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/remote/take_photos')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/take_photos')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
                 <Camera className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Take Photos</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/remote/record_video')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/record_video')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Video className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Record Video</span>
               </button>
             </div>
           )}

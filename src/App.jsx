@@ -24,6 +24,12 @@ import AppManagementPage from './pages/phone_data/AppManagementPage';
 import ContactsPage from './pages/phone_data/ContactsPage';
 import VideoPreviewPage from './pages/phone_data/VideoPreviewPage';
 import CalendarPage from './pages/phone_data/CalendarPage';
+import RecordSurroundPage from './pages/remote/RecordSurroundPage';
+import CaptureScreenshotsPage from './pages/remote/CaptureScreenshotsPage';
+import RecordScreenPage from './pages/remote/RecordScreenPage';
+import LiveScreenPage from './pages/remote/LiveScreenPage';
+import TakePhotosPage from './pages/remote/TakePhotosPage';
+import RecordVideoPage from './pages/remote/RecordVideoPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -52,6 +58,12 @@ function MainLayout() {
     if (pathname.includes('/video_preview')) return 'Video Preview';
     if (pathname.includes('/contacts')) return 'Contacts';
     if (pathname.includes('/calendar')) return 'Calendar';
+    if (pathname.includes('/record_surround')) return 'Record Surround';
+    if (pathname.includes('/capture_screenshots')) return 'Capture Screenshots';
+    if (pathname.includes('/record_screen')) return 'Record Screen';
+    if (pathname.includes('/live_screen')) return 'Live Screen';
+    if (pathname.includes('/take_photos')) return 'Take Photos';
+    if (pathname.includes('/record_video')) return 'Record Video';
     return 'Dashboard';
   };
 
@@ -116,6 +128,12 @@ function MainLayout() {
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/phonedata/calendar" element={<CalendarPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/remote/record_surround" element={<RecordSurroundPage />} />
+            <Route path="/remote/capture_screenshots" element={<CaptureScreenshotsPage />} />
+            <Route path="/remote/record_screen" element={<RecordScreenPage />} />
+            <Route path="/remote/live_screen" element={<LiveScreenPage />} />
+            <Route path="/remote/take_photos" element={<TakePhotosPage />} />
+            <Route path="/remote/record_video" element={<RecordVideoPage />} />
           </Routes>
         </main>
       </div>
