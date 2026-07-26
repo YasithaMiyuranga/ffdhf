@@ -34,6 +34,13 @@ import LocationsPage from './pages/location/LocationsPage';
 import DrivingTrackingPage from './pages/location/DrivingTrackingPage';
 import GeofencePage from './pages/location/GeofencePage';
 import DashCamsPage from './pages/location/DashCamsPage';
+import GmailPage from './pages/more_features/GmailPage';
+import OutlookPage from './pages/more_features/OutlookPage';
+import PhotoDetectionPage from './pages/more_features/PhotoDetectionPage';
+import GPTDetectionPage from './pages/more_features/GPTDetectionPage';
+import InAppPurchasePage from './pages/more_features/InAppPurchasePage';
+import ExportDataPage from './pages/more_features/ExportDataPage';
+import PermissionsCheckPage from './pages/more_features/PermissionsCheckPage';
 
 function MainLayout() {
   const location = useLocation();
@@ -72,6 +79,13 @@ function MainLayout() {
     if (pathname.includes('/driving_tracking')) return 'Driving Tracking';
     if (pathname.includes('/geofence')) return 'Geofence';
     if (pathname.includes('/dash_cams')) return 'Dash Cams';
+    if (pathname.includes('/gmail')) return 'Gmail';
+    if (pathname.includes('/outlook')) return 'Outlook';
+    if (pathname.includes('/photo_detection')) return 'Photo Detection';
+    if (pathname.includes('/gpt_detection')) return 'GPT Detection';
+    if (pathname.includes('/in_app_purchase')) return 'In-App Purchase';
+    if (pathname.includes('/export_data')) return 'Export Data';
+    if (pathname.includes('/permissions_check')) return 'Permissions Check';
     return 'Dashboard';
   };
 
@@ -150,6 +164,13 @@ function MainLayout() {
             <Route path="/geofence" element={<GeofencePage />} />
             <Route path="/location/dash_cams" element={<DashCamsPage />} />
             <Route path="/dash_cams" element={<DashCamsPage />} />
+            <Route path="/more/gmail" element={<GmailPage />} />
+            <Route path="/more/outlook" element={<OutlookPage />} />
+            <Route path="/more/photo_detection" element={<PhotoDetectionPage />} />
+            <Route path="/more/gpt_detection" element={<GPTDetectionPage />} />
+            <Route path="/more/in_app_purchase" element={<InAppPurchasePage />} />
+            <Route path="/more/export_data" element={<ExportDataPage />} />
+            <Route path="/more/permissions_check" element={<PermissionsCheckPage />} />
           </Routes>
         </main>
       </div>

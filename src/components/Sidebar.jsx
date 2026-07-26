@@ -29,7 +29,15 @@ import {
   Flame,
   BatteryCharging,
   Tv,
-  Navigation
+  Navigation,
+  Mail,
+  MailOpen,
+  Sparkles,
+  Bot,
+  ShoppingCart,
+  Download,
+  ShieldCheck,
+  MoreHorizontal
 } from 'lucide-react';
 
 // Custom SVG Logos for Video Apps Sidebar
@@ -610,6 +618,108 @@ export default function Sidebar() {
               >
                 <Video className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Dash Cams</span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* More Features Accordion */}
+        <div>
+          <button
+            onClick={() => toggleSection('more')}
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-800/60 text-slate-300 transition-all"
+          >
+            <div className="flex items-center space-x-3">
+              <MoreHorizontal className="w-5 h-5 text-cyan-400" />
+              <span>More Features</span>
+            </div>
+            {openSections.more ? <ChevronDown className="w-4 h-4 text-cyan-400" /> : <ChevronRight className="w-4 h-4 text-slate-500" />}
+          </button>
+
+          {openSections.more && (
+            <div className="ml-8 mt-1 space-y-1 pl-2 border-l border-slate-800 text-xs">
+              <button
+                onClick={() => navigate('/more/gmail')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/gmail')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Gmail</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/outlook')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/outlook')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <MailOpen className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Outlook</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/photo_detection')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/photo_detection')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Photo Detection</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/gpt_detection')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/gpt_detection')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Bot className="w-3.5 h-3.5 text-cyan-400" />
+                <span>GPT Detection</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/in_app_purchase')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/in_app_purchase')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <ShoppingCart className="w-3.5 h-3.5 text-cyan-400" />
+                <span>In-App Purchase</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/export_data')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/export_data')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <Download className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Export Data</span>
+              </button>
+
+              <button
+                onClick={() => navigate('/more/permissions_check')}
+                className={`w-full flex items-center space-x-2 px-2.5 py-1.5 rounded-lg transition-all ${
+                  currentPath.includes('/permissions_check')
+                    ? 'bg-[#009bb3] text-white font-bold'
+                    : 'hover:bg-slate-800/40 text-slate-300'
+                }`}
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Permissions Check</span>
               </button>
             </div>
           )}
