@@ -1,24 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ChevronDown, MapPin } from 'lucide-react';
+import { api } from '../../services/api';
 
 export default function Locations() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('All');
+  const [locs, setLocs] = useState([]);
 
-  const locs = [
+  const defaultMockLocs = [
     {
-      id: 1,
+      id: 'mock-1',
       address: 'Times Square, 1560 Broadway Suite 1001, New York, NY 10036',
       coords: '40.7580, -73.9855',
       time: '26-07-2026 14:20:37'
     },
     {
-      id: 2,
+      id: 'mock-2',
       address: '350 5th Ave, New York, NY 10118',
       coords: '40.7484, -73.9857',
       time: '26-07-2026 12:00:40'
     }
   ];
+
+  useEffect(() => {
+    async function loadLocations() {
+      const serverLocations = await api.getLocations();
+      if (serverLocations && serverLocations.length > 0) {
+        const formattedLocations = serverLocations.map((item, index) => ({
+          id: item._id || index,
+          address: item.address || 'Unknown Address',
+          coords: `${item.latitude.toFixed(4)}, ${item.longitude.toFixed(4)}`,
+          time: new Date(item.timestamp).toISOString().replace('T', ' ').substring(0, 19)
+        }));
+        setLocs([...formattedLocations, ...defaultMockLocs]);
+      } else {
+        setLocs(defaultMockLocs);
+      }
+    }
+    loadLocations();
+  }, []);
 
   return (
     <div className="bg-white rounded-2xl shadow-xs border border-slate-200/80 p-6 min-h-[720px] flex flex-col space-y-6">

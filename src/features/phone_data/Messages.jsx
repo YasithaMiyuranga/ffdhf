@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Calendar, ChevronLeft, ChevronRight, User, Play, Image as ImageIcon } from 'lucide-react';
+import { api } from '../../services/api';
 
 export default function Messages() {
   const [activeThread, setActiveThread] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [threads, setThreads] = useState([]);
+  const [chatMessages, setChatMessages] = useState({});
 
-  const threads = [
+  const defaultMockThreads = [
     {
       id: 1,
       name: 'Mark',
@@ -32,7 +35,7 @@ export default function Messages() {
     }
   ];
 
-  const chatMessages = {
+  const defaultMockChatMessages = {
     1: [
       {
         id: 1,
@@ -82,6 +85,60 @@ export default function Messages() {
       { id: 1, sender: 'Dad', text: "I hope you haven't invited any guests.", time: '2025-02-01 16:41:01', isMe: false }
     ]
   };
+
+  useEffect(() => {
+    async function loadMessages() {
+      const serverLogs = await api.getLogs('sms');
+      if (serverLogs && serverLogs.length > 0) {
+        // Group by sender name
+        const groups = {};
+        serverLogs.forEach((item, index) => {
+          const senderName = item.details.name || item.details.phoneNumber || 'Unknown';
+          if (!groups[senderName]) {
+            groups[senderName] = [];
+          }
+          groups[senderName].push({
+            id: item._id || index,
+            sender: senderName,
+            text: item.details.message || '',
+            time: new Date(item.timestamp).toISOString().replace('T', ' ').substring(0, 19),
+            isMe: item.details.isMe || false
+          });
+        });
+
+        // Format threads list
+        const dbThreads = Object.keys(groups).map((name, index) => {
+          const threadId = `db-${index}`;
+          const messages = groups[name];
+          const latestMsg = messages[0]; // Sorted by timestamp desc in API
+          return {
+            id: threadId,
+            name: name,
+            time: latestMsg.time,
+            snippet: latestMsg.text.length > 30 ? latestMsg.text.substring(0, 30) + '...' : latestMsg.text
+          };
+        });
+
+        // Format chatMessages map
+        const dbChatMessages = {};
+        Object.keys(groups).forEach((name, index) => {
+          const threadId = `db-${index}`;
+          // Sort messages asc for the chat bubble timeline view
+          dbChatMessages[threadId] = [...groups[name]].reverse();
+        });
+
+        setThreads([...dbThreads, ...defaultMockThreads]);
+        setChatMessages({ ...dbChatMessages, ...defaultMockChatMessages });
+        if (dbThreads.length > 0) {
+          setActiveThread(dbThreads[0].id);
+        }
+      } else {
+        setThreads(defaultMockThreads);
+        setChatMessages(defaultMockChatMessages);
+      }
+    }
+    loadMessages();
+  }, []);
 
   return (
     <div className="bg-white rounded-2xl shadow-xs border border-slate-200/80 min-h-[720px] flex overflow-hidden">

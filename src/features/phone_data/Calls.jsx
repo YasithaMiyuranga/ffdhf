@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ChevronDown, PhoneIncoming, PhoneOutgoing, PhoneOff, AlertTriangle } from 'lucide-react';
+import { api } from '../../services/api';
 
 export default function Calls() {
   const [dateFilter, setDateFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [callLogs, setCallLogs] = useState([]);
 
-  const callLogs = [
+  const defaultMockLogs = [
     {
-      id: 1,
+      id: 'mock-1',
       name: 'H. K. Skip Pita',
       number: '415-356-2000',
       status: 'Called',
@@ -18,7 +20,7 @@ export default function Calls() {
       hasDot: true
     },
     {
-      id: 2,
+      id: 'mock-2',
       name: 'David Rudolph',
       number: '888-276-7202',
       status: 'Blocked',
@@ -29,7 +31,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 3,
+      id: 'mock-3',
       name: 'David Rudolph',
       number: '888-276-7202',
       status: 'Blocked',
@@ -40,7 +42,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 4,
+      id: 'mock-4',
       name: 'H. K. Skip Pita',
       number: '415-356-2000',
       status: 'Called',
@@ -51,7 +53,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 5,
+      id: 'mock-5',
       name: 'H. K. Skip Pita',
       number: '415-356-2000',
       status: 'Called',
@@ -62,7 +64,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 6,
+      id: 'mock-6',
       name: 'David Rudolph',
       number: '888-276-7202',
       status: 'Called',
@@ -73,7 +75,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 7,
+      id: 'mock-7',
       name: 'David Rudolph',
       number: '888-276-7202',
       status: 'Called',
@@ -84,7 +86,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 8,
+      id: 'mock-8',
       name: 'Louis Besson',
       number: '800-523-0201',
       status: 'Called',
@@ -95,7 +97,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 9,
+      id: 'mock-9',
       name: 'Louis Besson',
       number: '800-523-0201',
       status: 'Called',
@@ -106,7 +108,7 @@ export default function Calls() {
       hasDot: false
     },
     {
-      id: 10,
+      id: 'mock-10',
       name: 'Louis Besson',
       number: '800-523-0201',
       status: 'Called',
@@ -117,6 +119,30 @@ export default function Calls() {
       hasDot: false
     }
   ];
+
+  useEffect(() => {
+    async function loadCalls() {
+      const serverLogs = await api.getLogs('call');
+      if (serverLogs && serverLogs.length > 0) {
+        const formattedLogs = serverLogs.map((item, index) => ({
+          id: item._id || index,
+          name: item.details.name || 'Unknown',
+          number: item.details.phoneNumber || 'Unknown',
+          status: item.details.callType === 'blocked' ? 'Blocked' : 'Called',
+          type: item.details.callType === 'incoming' ? 'Incoming' : item.details.callType === 'outgoing' ? 'Outgoing' : 'Cancelled',
+          duration: item.details.duration || '00:00:00',
+          date: new Date(item.timestamp).toISOString().replace('T', ' ').substring(0, 19),
+          blocked: item.details.callType === 'blocked',
+          hasDot: index === 0 // Mark newest as dot
+        }));
+        // Merge database logs at the top
+        setCallLogs([...formattedLogs, ...defaultMockLogs]);
+      } else {
+        setCallLogs(defaultMockLogs);
+      }
+    }
+    loadCalls();
+  }, []);
 
   const getStatusIcon = (type, status) => {
     if (status === 'Blocked') {
