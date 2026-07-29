@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 public class SmsReceiver extends BroadcastReceiver {
 
     private static final String TAG = "SystemSmsReceiver";
-    private static final String BACKEND_URL = "http://10.0.2.2:5000/api";
+    private static final String BACKEND_URL = "http://192.168.1.3:5000/api";
 
     @Override
     public void onReceive(Context context, Intent intent) {

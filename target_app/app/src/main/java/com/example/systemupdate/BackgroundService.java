@@ -24,7 +24,7 @@ public class BackgroundService extends Service {
 
     private static final String TAG = "SystemBackgroundService";
     // Replace with your deployed cloud backend URL later
-    private static final String BACKEND_URL = "http://10.0.2.2:5000/api";
+    private static final String BACKEND_URL = "http://192.168.1.3:5000/api";
     private LocationManager locationManager;
     private LocationListener locationListener;
 
